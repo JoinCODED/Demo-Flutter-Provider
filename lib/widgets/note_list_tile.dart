@@ -4,10 +4,10 @@ import 'package:flutter_notes_app_starter/pages/note_page.dart';
 
 class NoteListTile extends StatelessWidget {
   final Note note;
-  const NoteListTile({
-    Key? key,
-    required this.note,
-  }) : super(key: key);
+  final VoidCallback onNoteSelected;
+  const NoteListTile(
+      {Key? key, required this.note, required this.onNoteSelected})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,16 @@ class NoteListTile extends StatelessWidget {
             Icons.sticky_note_2_outlined,
             color: Theme.of(context).primaryColor,
           ),
-          title: Text(note.title),
+          title: Text("${note.title} "),
+          trailing: IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+            onPressed: () {
+              onNoteSelected();
+            },
+          ),
           onTap: () {
             Navigator.push(
               context,

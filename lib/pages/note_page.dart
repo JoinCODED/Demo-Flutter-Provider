@@ -23,14 +23,12 @@ class _NotePageState extends State<NotePage> {
         ),
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      body: Card(
-        elevation: 4,
-        child: Center(
-          child: Text(
-            widget.note.body,
-            style: TextStyle(
-              fontSize: 18,
-            ),
+      body: Container(
+        padding: EdgeInsets.all(30),
+        child: Text(
+          widget.note.body,
+          style: TextStyle(
+            fontSize: 18,
           ),
         ),
       ),
