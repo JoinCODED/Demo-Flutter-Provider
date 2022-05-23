@@ -35,6 +35,9 @@ void main() {
 }
 ```
 9. in HomPage comment add note and remove the list of note 
-10. Anywhare you need the list of notes add this `Provider.of<NoteProvider>(context, listen: true);`
+10. Anywhare you need the list of notes add this `context.watch<NoteProvider>()`
 11. Now lets add the addNote function to the provider 
-12. try it without the notifyListeners() then add it 
+12. To call it `context.read<NoteProvider>()`
+13. try it without the notifyListeners() then add it 
+14. Add the delete note in the provider
+15. Call it in the Note tile 
