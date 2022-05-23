@@ -1,6 +1,8 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import '../models/note.dart';
+import '../providers/note_provider.dart';
 import '../widgets/note_list_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,12 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List notes = Note.notes;
-
-  void addNote(String title, String body) {
-    //TODO 1: add note code
-  }
-
   @override
   Widget build(BuildContext context) {
     final _titleTextEditingController = TextEditingController();
@@ -68,7 +64,11 @@ class _HomePageState extends State<HomePage> {
                       Icons.add_box,
                       color: Theme.of(context).primaryColor,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<NoteProvider>(context, listen: false).addNote(
+                          title: _titleTextEditingController.text,
+                          body: _bodyTextEditingController.text);
+                    },
                   ),
                 ),
               ),
@@ -77,14 +77,13 @@ class _HomePageState extends State<HomePage> {
               // #1
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: notes.length,
+              // ignore: sdk_version_constructor_tearoffs
+              itemCount: context.watch<NoteProvider>().notes.length,
               itemBuilder: (BuildContext context, int index) {
                 // #2
                 return NoteListTile(
-                  onNoteSelected: () {
-                    // TODO 2 : delete note code
-                  },
-                  note: notes[index],
+                  // ignore: sdk_version_constructor_tearoffs
+                  note: context.watch<NoteProvider>().notes[index],
                 );
               },
             ),

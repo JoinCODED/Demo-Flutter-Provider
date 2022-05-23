@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_notes_app_starter/models/note.dart';
 import 'package:flutter_notes_app_starter/pages/note_page.dart';
+import 'package:provider/provider.dart';
+import '../providers/note_provider.dart';
 
 class NoteListTile extends StatelessWidget {
   final Note note;
-  final VoidCallback onNoteSelected;
-  const NoteListTile(
-      {Key? key, required this.note, required this.onNoteSelected})
-      : super(key: key);
+
+  const NoteListTile({Key? key, required this.note}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class NoteListTile extends StatelessWidget {
               color: Colors.red,
             ),
             onPressed: () {
-              onNoteSelected();
+              context.read<NoteProvider>().deleteNote(id: note.id);
             },
           ),
           onTap: () {
