@@ -27,7 +27,7 @@ class NoteListTile extends StatelessWidget {
               color: Colors.red,
             ),
             onPressed: () {
-              onNoteSelected();
+             
             },
           ),
           onTap: () {
