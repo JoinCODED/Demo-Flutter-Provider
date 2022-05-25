@@ -81,9 +81,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (BuildContext context, int index) {
                 // #2
                 return NoteListTile(
-                  onNoteSelected: () {
-                    // TODO 2 : delete note code
-                  },
+               
                   note: notes[index],
                 );
               },
