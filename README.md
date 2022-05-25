@@ -41,3 +41,4 @@ void main() {
 13. try it without the notifyListeners() then add it 
 14. Add the delete note in the provider
 15. Call it in the Note tile 
+16. Finally change the widget to a stateless widget 
